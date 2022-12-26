@@ -20,5 +20,21 @@ pipeline {
 
             }
         }
+	stage('Push Container') {
+            steps {
+		echo "workspace is $WORKSPACE"
+		dir("$WORKSPACE/azure-vote"){
+			script{
+				docker.withRegistery('https://indoex.docker.io/v1','Docker'){
+					def image = docker.build('blackdentech/jenkins-course:latest')
+					image.push()
+				}
+			}
+
+		}
+                 
+
+            }
+        }
     }
 }
