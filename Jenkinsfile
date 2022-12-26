@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo "$GIT_BRANCH"
+                pwsh(script: "echo tony")
             }
         }
         stage('Docker Build') {
